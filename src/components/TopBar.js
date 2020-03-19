@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 

@@ -7,7 +7,7 @@ import TopBar from "./components/TopBar";
 import Grid from "@material-ui/core/Grid";
 import * as serviceWorker from "./serviceWorker";
 
-const KEY = "";
+const KEY = process.env.API_KEY || "";
 
 const App = () => {
   const [position, setPosition] = useState([]);
@@ -18,18 +18,18 @@ const App = () => {
   const [city, setCity] = useState("");
 
   useEffect(() => {
-    geoLocate();
-  }, []);
+    const geoLocate = async () => {
+      try {
+        const { coords } = await getCurrentPosition();
+        const { latitude, longitude } = coords;
+        setPosition([...position, { lat: latitude, lon: longitude }]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const geoLocate = async () => {
-    try {
-      const { coords } = await getCurrentPosition();
-      const { latitude, longitude } = coords;
-      setPosition([...position, { lat: latitude, lon: longitude }]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    geoLocate();
+  }, [position]);
 
   const placeMarker = position => {
     setMarkers([

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Map, Marker, Polyline, CircleMarker, TileLayer } from "react-leaflet";
+import React from "react";
+import { Map, Polyline, CircleMarker, TileLayer } from "react-leaflet";
 import ConfirmBox from "./ConfirmBox";
 
 export default function MapLayer(props) {
