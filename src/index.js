@@ -5,6 +5,9 @@ import { getCurrentPosition } from "./components/utils";
 import Map from "./components/Map";
 import TopBar from "./components/TopBar";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container"
+import InfoBox from "./components/InfoBox"
+import Header from './components/Header';
 import * as serviceWorker from "./serviceWorker";
 
 const KEY = process.env.API_KEY || "";
@@ -82,8 +85,13 @@ const App = () => {
   };
 
   return (
+    
     <div className="root">
-      <Grid container spacing={0}>
+      <Container>
+      <Grid container spacing={0} mt={10}>
+      <Grid item xs={12}>
+          <Header/>
+        </Grid>
         <Grid item xs={12}>
           <TopBar
             address={address}
@@ -105,7 +113,11 @@ const App = () => {
             markers={markers}
           />
         </Grid>
+        <Grid item xs={12}>
+          <InfoBox />
+        </Grid>
       </Grid>
+      </Container>
     </div>
   );
 };
